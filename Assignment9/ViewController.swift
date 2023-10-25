@@ -7,39 +7,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     //MARK: Creating properties
-    @IBOutlet weak var state: UISwitch!
-    @IBOutlet weak var text: UILabel!
-    @IBOutlet weak var num1: UITextField!
-    @IBOutlet weak var num2: UITextField!
-    @IBOutlet weak var calculate: UIButton!
-    @IBOutlet weak var output: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    @IBOutlet private weak var stateLabel: UISwitch!
+    @IBOutlet private weak var textLabel: UILabel!
+    @IBOutlet private weak var firstNumberTextField: UITextField!
+    @IBOutlet private weak var secondNumberTextField: UITextField!
+    @IBOutlet private weak var calculateButton: UIButton!
+    @IBOutlet private weak var outputLabel: UILabel!
+  
+    @IBAction private func switched(_ sender: Any) {
+        textLabel.text = stateLabel.isOn ? "GCD" : "LCM"
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    
-    @IBAction func switched(_ sender: Any) {
-        if state.isOn {
-            text.text = "GCD"
-        } else {
-            text.text = "LCM"
-        }
-    }
-    
-    @IBAction func calculated(_ sender: Any) {
+    @IBAction func calculateButtonDidTap(_ sender: Any) {
         /*
         if let x = num1.rangeOfCharacter(from: NSCharacterSet.decimalDigits) {
             output.text = calculating()
@@ -48,25 +30,21 @@ class ViewController: UIViewController {
         }
         */
         // Restricted text fields with number pads, but it did not work.
-        if num1.hasText && num2.hasText {
-        output.text = calculating()
+        if firstNumberTextField.hasText && secondNumberTextField.hasText {
+            outputLabel.text = calculating()
         } else {
-            output.text = "Please insert the numbers."
+            outputLabel.text = "Please insert the numbers."
         }
     }
         
-    func calculating() -> String {
-        if state.isOn {
-            return String(calculateGCD())
-        } else {
-            return String(calculateLCM())
-        }
+    private func calculating() -> String {
+        stateLabel.isOn ? String(calculateGCD()) : String(calculateLCM())
     }
 
-    func calculateGCD() -> Int {
+    private func calculateGCD() -> Int {
         var a = 0
-        let firstNum = Int(num1.text!)
-        let secondNum = Int(num2.text!)
+        let firstNum = Int(firstNumberTextField.text!)
+        let secondNum = Int(secondNumberTextField.text!)
         var b = max(firstNum!, secondNum!)
         var r = min(firstNum!, secondNum!)
             
@@ -78,10 +56,10 @@ class ViewController: UIViewController {
         return b
     }
     
-    func calculateLCM() -> Int {
-        let firstNum = Int(num1.text!)
-        let secondNum = Int(num2.text!)
-        return firstNum! / calculateGCD() * secondNum!
+    private func calculateLCM() -> Int {
+        let firstNum = Int(firstNumberTextField.text!)
+        let secondNum = Int(secondNumberTextField.text!)
+        return firstNum!/calculateGCD()*secondNum!
     }
     
     

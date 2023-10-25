@@ -65,12 +65,12 @@
                         <color key="backgroundColor" red="0.76008668664383561" green="0.95879708904109584" blue="0.73311750856164382" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="calculate" destination="Jic-5F-vKp" id="0ro-JF-uC3"/>
+                        <outlet property="calculateButton" destination="Jic-5F-vKp" id="VqP-wM-8fP"/>
                         <outlet property="num1" destination="Vac-Bn-V9o" id="jHZ-dO-qk9"/>
-                        <outlet property="num2" destination="6Ew-ed-8EQ" id="oeo-PE-Pwd"/>
-                        <outlet property="output" destination="dLC-fD-h4m" id="GKB-hN-7Tj"/>
-                        <outlet property="state" destination="MqE-cU-RVP" id="YE8-X3-aVg"/>
-                        <outlet property="text" destination="pfW-DL-g64" id="yj9-td-OmL"/>
+                        <outlet property="outputLabel" destination="dLC-fD-h4m" id="mgv-gu-yml"/>
+                        <outlet property="secondNumberTextField" destination="6Ew-ed-8EQ" id="hqF-Nv-fqB"/>
+                        <outlet property="stateLabel" destination="MqE-cU-RVP" id="G61-4h-1bE"/>
+                        <outlet property="textLabel" destination="pfW-DL-g64" id="cQ7-04-Zv2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
